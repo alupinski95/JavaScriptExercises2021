@@ -13,6 +13,7 @@ function main(){
 function addIfLeapYear(array, year){
     if(year%4 === 0)
        array.push(year);
+    // array.push(year%4 === 0);
 }
 
 function leapYear_1Simple(array){
@@ -35,6 +36,7 @@ function leapYear_3Filter(array){
     leapYears = array.filter(element =>{
         if(element%4===0) 
             return element;
+        //return element%4===0
     });
     console.log("Function leapYear_3Filter resoult: " + leapYears);
 }

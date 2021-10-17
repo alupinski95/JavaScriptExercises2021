@@ -3,8 +3,7 @@ Nivo1985
 2) Calculate factorial of 7.
 3) Calculate the sum of the odd items [1,6,23,8,4,98,3,7,3,98,4,98]
 4) Choose highest and lowest values from the given array. [1,6,23,8,4,98,3,7,3,98,4,98]. One loop run.
-5) Choose longest string from the array. [‘Karol’,
-‘Adam’,’Rogowski’,’Politechnika’,’Super’,’Weekend’].
+5) Choose longest string from the array. [‘Karol’,‘Adam’,’Rogowski’,’Politechnika’,’Super’,’Weekend’].
 6) Choose all the indexes on the highest value from the given array. [1,6,23,8,4,98,3,7,3,98,4,98].
 7) Calculate average value from the given array for even numbers [1,6,23,8,4,98,3,7,3,98,4,98]
 8) Calculate average value of items at even indexes. Zero is not considered to be even number.
