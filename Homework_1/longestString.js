@@ -24,7 +24,7 @@ function getLongestStringInArray(array){
 }
 
 function getLongestBySort(array){
-    var longest = array.sort(
+    let longest = array.sort(
         function (a, b) {
             return b.length - a.length;
         }

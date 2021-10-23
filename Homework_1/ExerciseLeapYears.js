@@ -17,7 +17,7 @@ function addIfLeapYear(array, year){
 }
 
 function leapYear_1Simple(array){
-    leapYears = [];
+    let leapYears = [];
     for(let i = 0; i<array.length;i++){
         addIfLeapYear(leapYears,array[i]);
     }
@@ -25,7 +25,7 @@ function leapYear_1Simple(array){
 }
 
 function leapYear_2Foreach(array){
-    leapYears = [];
+    let leapYears = [];
     array.forEach(element => {
         addIfLeapYear(leapYears,element);
     });
@@ -33,7 +33,7 @@ function leapYear_2Foreach(array){
 }
 
 function leapYear_3Filter(array){
-    leapYears = array.filter(element =>{
+    let leapYears = array.filter(element =>{
         if(((element % 4 == 0) && (element % 100 != 0)) || (element % 400 == 0)) 
             return element;
         //return ((element % 4 == 0) && (element % 100 != 0)) || (element % 400 == 0)
