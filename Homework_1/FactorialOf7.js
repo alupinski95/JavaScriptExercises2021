@@ -8,7 +8,7 @@ function main(){
 }
 
 function factorialFor(num){
-    factorial = 1;
+    let factorial = 1;
     for (let i = 1; i <= num; i++) {
         factorial = factorial * i;
     }
@@ -17,7 +17,7 @@ function factorialFor(num){
 }
 
 function factorialWhile(num){
-    factorial = 1;
+    let factorial = 1;
     let iter = 1;
     while(iter <=num){
         factorial *= iter;
@@ -28,7 +28,7 @@ function factorialWhile(num){
 }
 
 function factorialDoWhile(num){
-    factorial = 1;
+    let factorial = 1;
     let iter = 1;
     do{
         factorial *= iter;
