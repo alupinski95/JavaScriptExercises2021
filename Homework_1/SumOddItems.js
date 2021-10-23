@@ -29,7 +29,7 @@ function sumOddItemsForEach(array){
 }
 
 function sumWithReduce(array){ 
-    const sum = array.reduce( //funkcja wywoływana na tablicy przyjmująca jako parametr funkcję i opcjonalnie startową wartość
+    let sum = array.reduce( //funkcja wywoływana na tablicy przyjmująca jako parametr funkcję i opcjonalnie startową wartość
         (partial_sum, a) =>{                                    //funkcja  która przyjmuje max 4 argumenty, accumulator - do tej wartości dodajemy wartości 
             if((a%2 !== 0)) return partial_sum + a;             // current_value - aktualna wartość z tablicy która jest przetwarzana 
             else return partial_sum;                            // opcjonalnie - index
