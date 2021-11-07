@@ -13,9 +13,8 @@ function getRandomIndex(array){
 }
 
 function createArrayWithRandomPick(array){
-    let len = array.length-1;
     let newArray=[];
-    for(let i=0;i<=len;i++){
+    for(let i=0;i<=array.length-1;i++){
         let index = getRandomIndex(array);
         newArray.push(array[index]);
         array.splice(index,1);
