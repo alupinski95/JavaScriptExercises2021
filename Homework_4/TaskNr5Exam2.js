@@ -1,8 +1,8 @@
 // losujesz 5 kart i wykrywasz najwyższy ukłąd
 // https://m.media-amazon.com/images/I/71xmLOiiywL._AC_SY741_.jpg
 
-
-
+const colorByValue = ['♥', '♦', '♣','♠']
+const cardByValue =['','As','2','3','4','5','6','7','8','9','10','J','Q','K']
 
 function getRandomIndex(max) {
     return Math.floor(Math.random() * (max)) + 1;
@@ -25,27 +25,17 @@ function pickFiveRandomCards(cardToPick) {
     }
     return pickedCards;
 }
-function checkHand(cards) {
-    let sorted = cards.sort(compareObjects);
-    let nameOfHand = chechIsPokerOrStrit(sorted);
-    if (!nameOfHand)
-        nameOfHand = chechIsPairThreeOrFour(sorted);
-    if (!nameOfHand)
-        nameOfHand = checkIsHighOrFlush(sorted);
-    return nameOfHand;
-}
 
 function compareObjects(a, b) {
     return a.value - b.value;
 }
 
-function main() {
-    let pickedCards = pickFiveRandomCards(5);
-    console.log(checkHand(pickedCards));
-}
 function isColorSame(sumofColor) {
     return sumofColor % 5 == 0;
 }
+
+
+
 function chechIsPokerOrStrit(cards) {
     let pattern = '1,2,3,4,5,6,7,8,9,10,11,12,13,1';
     let handPattern = '';
@@ -79,9 +69,8 @@ function chechIsPairThreeOrFour(cards) {
             newSetLength++;
         } 
     });
-
-    
     if(newSetLength ==4){
+        arrayHand.indexOf(2);
         return 'One pair';
     }
     if(newSetLength==3){
@@ -106,6 +95,24 @@ function checkIsHighOrFlush(cards) {
     if(isColorSame(sumOfColors)){
         return 'Flush';
     }
-    return 'High card';
+    return 'High card' + cards[cards.length-1];
+}
+
+function checkHand(cards) {
+    let sorted = cards.sort(compareObjects);
+    let nameOfHand = chechIsPokerOrStrit(sorted);
+    if (!nameOfHand)
+        nameOfHand = chechIsPairThreeOrFour(sorted);
+    if (!nameOfHand)
+        nameOfHand = checkIsHighOrFlush(sorted);
+    return nameOfHand;
+}
+let hand = [{value:2,color:1},{value:2,color:2},
+    {value:3,color:1},{value:4,color:1},{value:6,color:1}]
+function main() {
+    let pickedCards = pickFiveRandomCards(5);
+    console.log("You got: " + checkHand(hand));
 }
 main();
+
+// 

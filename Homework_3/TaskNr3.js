@@ -7,6 +7,7 @@ let BaseObject =
 {  x:Number,
     y:Number,
     sum: function (){ return this.x+this.y}};
+    
 const array = [{x:2,y:3},{x:-1,y:6},{x:0,y:8},{x:3,y:8}]
 
 function main(){
