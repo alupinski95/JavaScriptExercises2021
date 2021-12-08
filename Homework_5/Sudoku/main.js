@@ -11,40 +11,55 @@ let sudokuTemp = [
     [5, 0, 8, 0, 0, 2, 1, 0, 3]
 ]
 const allPossibilities = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-let possibleNumbersToPut = Array.from(Array(9), () => new Array(9));
-
+let possibleNumbersToPutInCell = Array.from(Array(9), () => new Array(9));
+let possibleNumbersToPutInSquare =[];
+let numbersToFind = 0;
 
 function main() {
-    resloweSudoku(sudokuTemp);
-    console.log(possibleNumbersToPut);
+    resloweSudoku(sudokuTemp,true);
+
+    while(numbersToFind){
+        resloweSudoku(sudokuTemp,false);
+    }
+    console.log(sudokuTemp[0]);
+    console.log(sudokuTemp[1]);
+    console.log(sudokuTemp[2]);
+    console.log(sudokuTemp[3]);
+    console.log(sudokuTemp[4]);
+    console.log(sudokuTemp[5]);
+    console.log(sudokuTemp[6]);
+    console.log(sudokuTemp[7]);
+    console.log(sudokuTemp[8]);
 }
 
-function resloweSudoku(array) {
+function resloweSudoku(array,isFirstLoop) {
     for (let x = 0; x < array.length; x++) {
         let actualLine = sudokuTemp[x];
         let actualSquare = [];
         for (let y = 0; y < array.length; y++) {
-
-
-            if (isNewSquareNeed(x, y))
+            if (array[x][y] > 0) {
+                continue;
+            }
+            if(isFirstLoop) numbersToFind++;
+            
+            if (isNewSquareNeed(x, y) || !isFirstLoop){
                 actualSquare = getActualSquare(array, x, y);
+            }
 
-            if (array[x][y] > 0) continue;
+            
 
             let actualColumn = getActualColumn(array, y);
 
             let diff = [...new Set([...actualLine, ...actualSquare, ...actualColumn])];
-            diff = allPossibilities.filter(x => !diff.includes(x))
+            diff = allPossibilities.filter(x => !diff.includes(x));
+            possibleNumbersToPutInCell[x][y] = diff;
+            
 
-            if (diff.length == 1) {
-                sudokuTemp[x][y] = diff[0];
-                updatePossibleRows(possibleNumbersToPut, x, v, diff[0]);
+            if (possibleNumbersToPutInCell[x][y] && possibleNumbersToPutInCell[x][y].length == 1) {
+                let value = possibleNumbersToPutInCell[x][y][0];
+                sudokuTemp[x][y] = value;
+                updatePossibleRows(x, y, value);
             }
-            else {
-                possibleNumbersToPut[x][y] = diff;
-            }
-
-
         }
 
     }
@@ -69,6 +84,8 @@ function isNewSquareNeed(x, y) {
 }
 
 function getActualSquare(array, x, y) {
+    x= Math.floor(x/3)*3;
+    y= Math.floor(y/3)*3;
     return [
         array[x][y],
         array[x][y + 1],
@@ -82,13 +99,26 @@ function getActualSquare(array, x, y) {
     ];
 }
 
-function updatePossibleRows(possibleNumbersToPut, x, y, value) {
-    let xhelper = x;
-    for (; x;) {
-        let index = possibleNumbersToPut[x][y].indexOf(value);
-        if (possibleNumbersToPut[x][y] && index != -1)
-            possibleNumbersToPut[x][y].splice(index, 1);
-    }
+function updatePossibleRows(x, y, value) {
+    numbersToFind--;
+    removeFromPosibleSet(x, y, value);
 
 }
+
+function removeFromPosibleSet(x, y, value) {
+    for(let i=0;i<9;i++){
+        if(possibleNumbersToPutInCell[i][y]){
+            let index = possibleNumbersToPutInCell[i][y].indexOf(value);
+            if (index != -1)
+                possibleNumbersToPutInCell[i][y].splice(index, 1);
+        } 
+        if(possibleNumbersToPutInCell[x][i]){//col
+            let index = possibleNumbersToPutInCell[x][i].indexOf(value);
+            if (index != -1)
+                possibleNumbersToPutInCell[x][i].splice(index, 1);
+        } 
+    }
+}
+
 main();
+
