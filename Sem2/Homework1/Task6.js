@@ -20,12 +20,22 @@ class TranslateEnPig{
         return text;
     }
 }
+class Translator{
+    constructor(textToBeTranslated, transaleMethod){
+        this.textToBeTranslated = textToBeTranslated;
+        this.transaleMethod = transaleMethod;
+    }
+    Translate(){
+        return this.transaleMethod(this.textToBeTranslated);
+    }
+}
 function main(str){
-    const translator = new TranslateEnPig();
-    let entoPig = translator.enToPig(str);
-    console.log(entoPig);
-    let pigToEn = translator.pigToEn(entoPig);
-    console.log(pigToEn);
+    const translatorToPig = new Translator(str,TranslateEnPig.enToPig);
+    let pig = translatorToPig.Translate();
+    console.log(pig);
+    const translatorToEn = new Translator(pig,TranslateEnPig.pigToEn);
+    let en = translatorToEn.Translate();
+    console.log(en);
     
 }
 

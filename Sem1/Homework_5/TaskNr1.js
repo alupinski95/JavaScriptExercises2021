@@ -33,7 +33,7 @@ function josephusProblem(personCounter) {
  
  
  
-function main(personCounter, step) { 
+function main(personCounter) { 
     createArray(personCounter); 
     while (array.length != 1) 
         josephusProblem(array.length); 
@@ -41,4 +41,4 @@ function main(personCounter, step) {
     console.log(array[0] + " Remains alive"); 
  
 } 
-main(8, 2); 
+main(8); 
