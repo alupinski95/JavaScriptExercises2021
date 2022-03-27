@@ -30,10 +30,11 @@ class Translator{
     }
 }
 function main(str){
-    const translatorToPig = new Translator(str,TranslateEnPig.enToPig);
+    let transaleMethods= new TranslateEnPig();
+    const translatorToPig = new Translator(str,transaleMethods.enToPig);
     let pig = translatorToPig.Translate();
     console.log(pig);
-    const translatorToEn = new Translator(pig,TranslateEnPig.pigToEn);
+    const translatorToEn = new Translator(pig,transaleMethods.pigToEn);
     let en = translatorToEn.Translate();
     console.log(en);
     

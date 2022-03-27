@@ -1,3 +1,4 @@
+'use strict';
 const arrayHelper = { 
     '.-':     'a',
     '-...':   'b',
@@ -37,8 +38,6 @@ const arrayHelper = {
     '-----':  '0',
   };
 
-
-
 class TranslatorN{
     constructor(textToBeTranslated, transaleMethod){
         this.textToBeTranslated = textToBeTranslated;
@@ -52,8 +51,6 @@ class TranslatorN{
 class Moorse{
     
     constructor(){
-        
-        
         Object.keys(arrayHelper).map(element =>{
             arrayHelper[arrayHelper[element]] = element;
             // this.arrayHelper[element] = this.arrayHelper[element];
@@ -86,14 +83,16 @@ class Moorse{
     }
 }
 
-function main(){
+function main(textToTranslate){
     let moorse = new Moorse();
 
-    let translateToEN = new TranslatorN(".-- --- .-. -..   .-- --- .-. -..",moorse.morseToEnglish);
+    let translateToEN = new TranslatorN(textToTranslate,moorse.morseToEnglish);
     let en = translateToEN.Translate();
     console.log(en);
     let translateToMorse = new TranslatorN(en,moorse.englishToMorse);
     console.log(translateToMorse.Translate());
 
 }
-main();
+main(".-- --- .-. -..   .-- --- .-. -..");
+
+
