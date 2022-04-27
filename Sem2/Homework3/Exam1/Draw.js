@@ -8,8 +8,13 @@ export class BoardView {
         this.drawBoard(boardArray);
     }
 
-    removeOldBall(ballPos) {
-        this.boardHtml.removeChild(this.boardHtml.querySelector('.ball'))
+    removeOldBall() {
+        debugger
+        let ball = document.querySelector('.ball');
+        this.boardHtml.removeChild(ball)
+        //ball.classList.remove("ball");
+        // debugger
+        // this.boardHtml.removeChild(ball)
     }
 
     drawBall(ballPos) {

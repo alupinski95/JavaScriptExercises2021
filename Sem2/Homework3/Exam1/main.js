@@ -4,23 +4,25 @@ import { board } from './ExampleInput.js';
 import { BoardView } from './Draw.js';
 
 
+const boardView = new BoardView(board);
 
 
 function main() {
-    let boardView = new BoardView(board);
     let gameInstance = gameSingleton.getGame(board);
-    debugger
-    // do {
-    boardView.removeOldBall(gameSingleton.getBallPosition());
 
     setTimeout(() => {
+        boardView.removeOldBall(gameSingleton.getBallPosition());
         gameSingleton.nextMoveGenerate();
         boardView.drawBall(gameSingleton.getBallPosition());
-    }, 1000)
-    window.requestAnimationFrame(main);
+        if (gameSingleton.checkIsEnd()) {
+            window.cancelAnimationFrame(main);
+        } else {
+            window.requestAnimationFrame(main);
 
-    if (gameSingleton.checkIsEnd()) {
-        return;
-    }
+        }
+
+    }, 1000)
+
 }
-window.requestAnimationFrame(main);
+main();
+// window.requestAnimationFrame(main);
