@@ -1,20 +1,15 @@
 "use strict";
 export class BoardView {
-
-
-
-    constructor(boardArray) {
+    constructor(boardArray, squareSize) {
         this.boardHtml = document.getElementById('game-board');
+        this.boardHtml.style.setProperty('grid-template-rows', `repeat(${boardArray.length}, ${squareSize}px)`)
+        this.boardHtml.style.setProperty('grid-template-columns', `repeat(${boardArray[0].length}, ${squareSize}px)`)
         this.drawBoard(boardArray);
     }
 
     removeOldBall() {
-        debugger
         let ball = document.querySelector('.ball');
-        this.boardHtml.removeChild(ball)
-        //ball.classList.remove("ball");
-        // debugger
-        // this.boardHtml.removeChild(ball)
+        this.boardHtml.removeChild(ball);
     }
 
     drawBall(ballPos) {

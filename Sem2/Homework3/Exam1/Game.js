@@ -6,35 +6,27 @@ import { moveBoardSingleton } from './MoveBoard.js';
 
 const gameSingleton = (function () {
     let gameInstance;
-    const gameState = {
-        Started: 1,
-        Paused: 2,
-        Ended: 3,
-        NotStarted: 4
-    }
 
     class Game {
 
         constructor(board) {
             this.board = board;
-            this.state = gameState.NotStarted;
             this.moveBoard = moveBoardSingleton.getMoveBoard(board);
-            this.ball = ballSingleton.getBall(this.moveBoard.moveBoard[1][1]);
+            this.ball = ballSingleton.getBall(this.moveBoard.ball);
         }
-
         setStateGame(state) {
             this.state = state;
         }
 
         nextMoveGenerate() {
-            //console.log('X: ' + this.ball.posX + '    Y: ' + this.ball.posY)
-
             ballSingleton.moveBall();
-            if (this.moveBoard.moveBoard[this.ball.posX][this.ball.posY] !== null) {
-                let vector =
-                    this.moveBoard.moveBoard[this.ball.posX][this.ball.posY].key ?
-                        this.moveBoard.moveBoard[this.ball.posX][this.ball.posY] :
-                        this.moveBoard.moveBoard[this.ball.posX][this.ball.posY][this.ball.vector.key];
+            if (this.moveBoard.moveBoard[this.ball.posX][this.ball.posY] !== null
+                && this.moveBoard.moveBoard[this.ball.posX][this.ball.posY][this.ball.vector.key]
+            ) {
+                let vector = this.moveBoard.moveBoard[this.ball.posX][this.ball.posY][this.ball.vector.key];
+                if (this.board[this.ball.posX][this.ball.posY] === "Y") {
+                    this.moveBoard.moveBoard[this.ball.posX][this.ball.posY] = null;
+                }
                 ballSingleton.setVector(vector);
             }
 

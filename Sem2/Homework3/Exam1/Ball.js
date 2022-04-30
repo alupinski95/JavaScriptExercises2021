@@ -2,10 +2,10 @@ const ballSingleton = (function () {
     let ballInstance;
 
     class Ball {
-        constructor(vector) {
-            this.posX = 1;
-            this.posY = 1;
-            this.vector = vector;
+        constructor(ballData) {
+            this.posX = ballData.x;
+            this.posY = ballData.y;
+            this.vector = ballData.vector;
         }
         setVector(vector) {
             this.vector = vector;
@@ -24,9 +24,9 @@ const ballSingleton = (function () {
         ballInstance.setVector(vector);
     }
 
-    function getBall(vector) {
+    function getBall(ballData) {
         if (!ballInstance) {
-            ballInstance = new Ball(vector);
+            ballInstance = new Ball(ballData);
         }
         return ballInstance;
     }

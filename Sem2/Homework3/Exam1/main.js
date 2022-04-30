@@ -1,10 +1,10 @@
 "use strict";
 import { gameSingleton } from './Game.js';
-import { board } from './ExampleInput.js';
+import { boardSec, board } from './ExampleInput.js';
 import { BoardView } from './Draw.js';
 
 
-const boardView = new BoardView(board);
+const boardView = new BoardView(board, 40);
 
 
 function main() {
@@ -21,7 +21,7 @@ function main() {
 
         }
 
-    }, 1000)
+    }, 500)
 
 }
 main();
