@@ -1,4 +1,4 @@
 to start project 
--- install extension LIve Server
--- in index.html pres  ctrl + p 
+-- npm install
+-- in index.html press  ctrl + p to open "Quick Open, Go to File…"
 -- search '>Live server: Open with Live Server'
