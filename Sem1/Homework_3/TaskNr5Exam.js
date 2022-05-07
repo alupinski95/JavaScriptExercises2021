@@ -26,7 +26,7 @@ function main() {
     }
 
     let heaviestIndex = compareSets(compareSet1, compareSet2, compareSet3);
-    console.log("Heaviest ball is on index: " + heaviestIndex)
+    console.log("Heaviest ball is on index: " + heaviestIndex + 1)
 }
 
 function compareSets(compareSet1, compareSet2, compareSet3) {
