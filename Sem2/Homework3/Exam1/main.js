@@ -4,11 +4,11 @@ import { boardSec, board } from './ExampleInput.js';
 import { BoardView } from './Draw.js';
 
 
-const boardView = new BoardView(board, 40);
+const boardView = new BoardView(boardSec, 40);
 
 
 function main() {
-    let gameInstance = gameSingleton.getGame(board);
+    let gameInstance = gameSingleton.getGame(boardSec);
 
     setTimeout(() => {
         boardView.removeOldBall(gameSingleton.getBallPosition());
