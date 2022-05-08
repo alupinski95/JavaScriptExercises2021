@@ -5,11 +5,9 @@ import { BoardView } from './Draw.js';
 
 
 const boardView = new BoardView(boardSec, 40);
-
+const gameInstance = gameSingleton.getGame(boardSec);
 
 function main() {
-    let gameInstance = gameSingleton.getGame(boardSec);
-
     setTimeout(() => {
         boardView.removeOldBall(gameSingleton.getBallPosition());
         gameSingleton.nextMoveGenerate();
