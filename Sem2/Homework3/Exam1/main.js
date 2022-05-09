@@ -5,14 +5,14 @@ import { BoardView } from './Draw.js';
 
 
 const boardView = new BoardView(boardSec, 40);
-const gameInstance = gameSingleton.getGame(boardSec);
-
 function main() {
+    const gameInstance = gameSingleton.getGame(boardSec);
+
     setTimeout(() => {
         boardView.removeOldBall(gameSingleton.getBallPosition());
-        gameSingleton.nextMoveGenerate();
+        gameInstance.nextMoveGenerate();
         boardView.drawBall(gameSingleton.getBallPosition());
-        if (gameSingleton.checkIsEnd()) {
+        if (gameInstance.checkIsEnd()) {
             window.cancelAnimationFrame(main);
         } else {
             window.requestAnimationFrame(main);
@@ -23,4 +23,3 @@ function main() {
 
 }
 main();
-// window.requestAnimationFrame(main);
